@@ -336,6 +336,10 @@ function myText(){
   push()
   stroke('blue')
   text('------- Field Current Limit',-220,-height/3.5)
+  text('<><>Based on: ',-width/5,0.5*(height))
+  text('        W.D.Stevenson,JR. and J.J.Grainger , Power System Analysis, ',-width/5,0.53*(height))
+  
+  text('        Tata McGraw-Hill 2003 [ pp110-113 ] ',-width/5,0.56*(height))
   pop()
  // myFill
   
