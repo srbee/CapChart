@@ -330,14 +330,22 @@ function myQlimit(){
 
 function myText(){
   
-  text('Capability Chart',25,-height/2.2)
+  //text('Capability Chart',25,-height/2.2)
+  push()
+  textSize(20)
+  stroke('Green')
+  strokeWeight(1)
+  text('Loading  Capability Chart ',width/4,-height/7)
+  pop()
   push()
   stroke('magenta')
-  text('------- Armature Current Limit',-260,-height/3.1)
+  strokeWeight(1)
+  text('Armature Current Limit',-width/3.8,-height/7)
   pop()
   push()
   stroke('blue')
-  text('------- Field Current Limit',-220,-height/3.5)
+  strokeWeight(1)
+  text('Field Current Limit',-width/4.5,-height/10)
   text('<><>Based on: ',-width/5,0.5*(height))
   text('        W.D.Stevenson,JR. and J.J.Grainger , Power System Analysis, ',-width/5,0.53*(height))
   
