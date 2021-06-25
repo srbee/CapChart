@@ -6,7 +6,7 @@
 // at the end of each function manipulating the lengths and angles 
 // of the phasor diagram 
 //12 June : Inhibited all button clicks which are not sequential
-// hence reducing the poss of crash due to random  clicks
+// hence reducing the possibility of crash due to random  clicks
 function setup() {
   var canvas=createCanvas(800, 1000);
   canvas.parent('sketchDiv')
@@ -249,6 +249,7 @@ function myCreateChart(){
 
 function myFill(){
   
+  
   if( (b5==0) && (b4==0) ){return};// trap inadverdent clicks
   
   if(b5==1){return}
@@ -258,6 +259,7 @@ function myFill(){
   button5.style('background-color', '');
   button6.style('background-color', 'yellow'); 
   push()
+  //blendMode(BURN)
   fill([255,255,0,150])
   arcX1=0,arcY1=-V_mag+xy[1]
   arcW1=2*I_mag*X;arcH1=arcW1,
@@ -272,6 +274,7 @@ function myFill(){
   arc(arcX2,arcY2,arcW2,arcH2,arcStart2,arcStop2,PIE)
   pop()
   myQlimit()
+  modArea()
   }//end of if
   
 }//end of function myFill()
@@ -311,9 +314,8 @@ function myQlimit(){
   push()
   stroke('black')
   strokeWeight(4)
-  xx1=0;
-  yy1=-V_mag/10;xx2=450;
-  yy2=-(V_mag/10-(0.2*V_mag/2))
+  xx1=0   ;yy1=-V_mag/10;
+  xx2=255 ;yy2=-(V_mag/10+(0.6*V_mag/2))
   yy1=yy1+xy[1]
   yy2=yy2+xy[1]
   line(xx1,yy1,xx2,yy2)
@@ -345,29 +347,19 @@ function myText(){
   
 }//end of function myText
 
+                           
+                           
+                           
+function modArea(){
+// trying to exclude area below the under-excitation line 
+  //arc(x,y,w,h,start,stop,PIE)
+  myX=0   ;myY=-V_mag/10+xy[1];
+  fill([255,255,0,100])
+  noStroke()
+  arc(myX,myY,550,300,-09,90,PIE)
+  
+  
+}//end of function modArea()
  
 
-function myCircuit(){
-  push();stroke('blue')
-  text('V = '+V_mag+'/_0',80,-240)
-  text('E ='+round(E_mag),-160,-235)
-  text('/_ '+round(-delta),-90,-235)
-  stroke('yellow')
-  //text('Delta=  '+round(-delta),-250,-120)
-  text('R+jX',-30,-280)
-  pop()
-  phasor(-30,-250,50,0)
-  //text('I /_phi',-10,-230)
-  text(' I /_'+round(I_ang),-30,-230)
-  rect(-50,-270,80,10)
-  circle(-85,-265,10)
-  circle(75,-265,10)
-  line(-50,-265,-80,-265)
-  line(30,-265,70,-265)
-  line(-80,-220,80,-220)
-  circle(-80,-220,10)
-  circle(80,-220,10)
-  //text('E/_delta',-130,-240)
-  //text('V/_0',80,-240)
-  
-}//end of myCircuit()
+ 
